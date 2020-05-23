@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+//
+<html>
+<head>
+	<title></title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+	<link rel="stylesheet" type="text/css" href="zui/css/zui.min.css">
+	<link rel="stylesheet" type="text/css" href="common.css">
+	<script src="dctjs/jquery-3.1.1.min.js"></script>
+	<script type="text/javascript" src="zui/js/zui.min.js"></script>
+</head>
+<style type="text/css">
+
+</style>
+<body style="margin: 20px;">
+<!-- <img id="scream" src="./dctimage/test.jpg" alt="The Scream" width="220" height="277"> -->
+<br>
+<br>
+<canvas id="myCanvas" width="250" height="300" style="border:1px solid #d3d3d3;">
+您的浏览器不支持 HTML5 canvas 标签。</canvas>
+</body>
+<script>
+var c=document.getElementById("myCanvas");
+var ctx=c.getContext("2d");
+var img = new Image();
+img.setAttribute('crossOrigin', 'anonymous');
+img.src = 'https://upload.jianshu.io/users/upload_avatars/8903527/1ff5f33b-0ff9-45e8-aa63-d3a8d0290581?imageMogr2/auto-orient/strip|imageView2/1/w/240/h/240';
+img.onload = function() {
+	ctx.drawImage(img,50,50,230,280,0,0,230,280);
+	var strDataURI = c.toDataURL("image/jpeg");
+	var image=strDataURI.replace("image/jpeg", "image/octet-stream");
+	window.location.href=image;
+}
+
+</script>
+</html>

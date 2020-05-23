@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>排序</title>
+	<link rel="icon" href="favicon.ico" mce_href="favicon.ico" type="image/x-icon">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+	<link rel="stylesheet" type="text/css" href="zui/css/zui.min.css">
+	<link rel="stylesheet" type="text/css" href="common.css">
+	<script src="dctjs/jquery-3.1.1.min.js"></script>
+	<script type="text/javascript" src="https://cdn.bootcss.com/vue/2.2.2/vue.min.js"></script>
+	<script type="text/javascript" src="zui/js/zui.min.js"></script>
+</head>
+<style type="text/css">
+	.btn{padding: 1px 6px;}
+</style>
+<body style="margin: 20px;">
+//生成随机输入数据
+	<div id="app">
+		<div><input style="border-radius: 8px;padding: 2px 6px; border: 1px solid #ccc;outline: none;" v-model="add" placeholder=""> <button v-on:click="addone"  class="btn btn-primary">添加</button> <button v-on:click="sortList" class="btn btn-info">排序</button></div>
+		<div class="mt2">
+		  <ul class="list-group">
+		    <li v-for="(listone,index) in sbool" class="list-group-item">
+		      {{ index + 1 }} . {{ listone.name }}&nbsp;&nbsp;<button v-on:click="del(index)" class="btn btn-danger fr">删除</button>
+		    </li>
+		  </ul>
+		</div>
+	</div>
+</body>
+<script>
+	var id = 0;
+	new Vue({
+	  el: '#app',
+	  data: {
+	  	add:'',
+	    message: 'Hello Vue.js!',
+	    sbool:[],
+	  },
+	  methods:{
+	  	addone:function(){
+	  		vm = this;
+	  		if(vm.add === ''){
+	  			new $.zui.Messager('不能有空字符串', {
+			        icon: 'bell', // 定义消息图标
+			        placement:'top-right',
+			    }).show();
+			    return;
+	  		}
+	  		vm.sbool.push({name:vm.add,id:id++});
+	  		vm.add = '';
+	  	},
+	  	del:function(index){
+	  		vm = this;
+	  		vm.sbool.splice(index,1);
+	  	},
+	  	sortList:function(){
+	  		vm = this;
+	  		random = [];
+	  		length = vm.sbool.length;
+	  		cc = vm.sbool;
+	  		for (let i = length - 1; i > -1; i--) {
+	  			let index = Math.floor(Math.random()*(i+1));
+	  			random.push(cc[index]);
+	  			cc.splice(index,1);
+	  		}
+	  		vm.sbool = random;
+	  	}
+	  }
+	})
+</script>
+</html>
