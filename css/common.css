@@ -1,3 +1,9 @@
+ol,ul,li { list-style:none; }
+img { border:none; }
+*{box-sizing: border-box;}
+button,input{ outline:none; border: none; }
+ol,ul,li { list-style:none; }
+a{text-decoration: none;}
 .fl{float: left;}
 .fr{float: right;}
 .mt1{margin-top: 10px;}
@@ -20,3 +26,4 @@
 .pr3{margin-top: 30px;}
 .pr4{margin-top: 40px;}
 .pr5{margin-top: 50px;}
+.
